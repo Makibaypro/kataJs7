@@ -5,30 +5,54 @@
    Lance `npm test` pour voir où tu en es.
    Ne modifie ni donnees.js, ni kata.test.js.
    ═══════════════════════════════════════════════════════════ */
-
+import { objets } from "./donnees.js"
 
 // ─── 1 ─── Renvoie un tableau contenant seulement les libellés des objets.
 export function listerLibelles(objets) {
-
+   const libelleArray = [];
+   objets.forEach(element => {
+      libelleArray.push(element.libelle);
+   });
+   return libelleArray;
 }
 
 
 // ─── 2 ─── Renvoie les objets dont le statut correspond à celui demandé.
 export function filtrerParStatut(objets, statut) {
-
+   const objectAsked = [];
+   objets.forEach(element => {
+      if(element.statut == statut) {
+         objectAsked.push(element);
+         
+      }
+   })
+   return objectAsked;
 }
+
 
 
 // ─── 3 ─── Renvoie l'objet qui porte cet id.
 //           S'il n'existe pas, renvoie null.
 export function trouverParId(objets, id) {
-
+   // let result = null;
+   // for(let i = 0; i < objets.length ; i++){
+   //    if(objets[i].id === id){
+   //       result = objets[i]
+   //    }
+   // }
+   let result = objets.find(element => element.id === id);
+   return result ? result : null;
 }
 
 
 // ─── 4 ─── Renvoie le poids total de tous les objets, arrondi à une décimale.
 export function poidsTotal(objets) {
+   let sum = 0;
+   objets.forEach(element => {
+      sum += element.poidsKg;
+   })
 
+   return Math.round(sum * 10) / 10;
 }
 
 
