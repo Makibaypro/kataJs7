@@ -59,12 +59,23 @@ export function poidsTotal(objets) {
 // ─── BONUS A ─── Renvoie un objet qui compte les objets par statut.
 //                 Forme attendue : { en_rayon: 3, vendu: 3, ... }
 export function compterParStatut(objets) {
-
+   const result = {};
+   objets.forEach(element => {
+      const statut = element.statut;
+      if(result[statut]){
+         result[statut] += 1;
+      } else {
+         result[statut] = 1;
+      }
+   })
+   return result;
 }
 
+console.log(compterParStatut(objets));
 
 // ─── BONUS B ─── Renvoie les objets triés du plus cher au moins cher,
 //                 SANS modifier le tableau d'origine.
 export function trierParPrix(objets) {
-
+   const result = [...objets];
+   return result.sort((a,b) => b.prix - a.prix)
 }
